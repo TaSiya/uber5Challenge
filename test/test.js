@@ -1,6 +1,6 @@
-const isPerfectString = require('./index');
+const isPerfectString = require('../index');
 const assert = require('assert');
-describe('testing function', function(){
+describe('isPerfectString tests', function(){
     describe('test cases for [1,n]', function(){
         it('should return true given qqwqw', function(){
             const char = 'qqwqw';
