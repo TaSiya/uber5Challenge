@@ -1,32 +1,32 @@
 /* 
- *aabbb = true
- *aabbbccc = false
- *wqwqq = true 
+ *qqqw = [3,1] = true
+ *aabbb = [2,3]= true
+ *aabbbccc = [2,3,3] = false
+ *wqwqq = [2,3] = true 
+ *eer = [2,1] = true
+ *xxyyzzqq = [2,2,2,2] = false
 */
 
-function isPerfectString(str){
+function isPerfectString(checkCharacters){
     charactersMap = {};
-    for (let index = 0; index < str.length; index++) {
-        const char = str[index];
+    for (let index = 0; index < checkCharacters.length; index++) {
+        const char = checkCharacters[index];
         charactersMap[char] ? charactersMap[char] ++ : charactersMap[char] = 1;
     }
-    const valuesArray = Object.values(charactersMap).sort();
-    let check = true;
-    // console.log(valuesArray);
-    for (let i = 0; i < valuesArray.length; i++) {
-        let occurance = 0;
-        for (let j = i; j +1 < valuesArray.length; j++) {
-            if(valuesArray[i] === valuesArray[j] || valuesArray[i] + 1 ==valuesArray[j]){
-                occurance ++;
-            }
-        }
-        if(occurance >=2){
-            check = false;
+    const sortedValuesArray = Object.values(charactersMap).sort();
+    let check = false;
+    if(sortedValuesArray.length == 2){
+        if(sortedValuesArray[0] == 1){ check = true;}
+        else if(sortedValuesArray[1] - sortedValuesArray[0] == 1){ check = true; }
+    } else{
+        for (let index = 0; index < sortedValuesArray.length -1; index++) {
+            const deducted = sortedValuesArray[index+1] - sortedValuesArray[index];
+            check = deducted == 1 ? true : false;
         }
     }
     return check;
 }
- 
-console.log(isPerfectString("aabbb"));
-
+const char = 'ssqsq';
+const isPerfect = isPerfectString(char)
+console.log(`${char} - ${isPerfect}`);
 module.exports = isPerfectString;
